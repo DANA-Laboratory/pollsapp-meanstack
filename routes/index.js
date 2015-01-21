@@ -13,7 +13,7 @@ if(process.env.OPENSHIFT_MONGODB_DB_PASSWORD){
 }
 
 //var db = mongoose.createConnection('localhost', 'pollsapp');
-var db = mongoose.createConnection('localhost', 'pollsapp');
+var db = mongoose.createConnection(connection_string);
 var PollSchema = require('../models/Poll.js').PollSchema;
 var Poll = db.model('polls', PollSchema);
 exports.index = function(req, res){
