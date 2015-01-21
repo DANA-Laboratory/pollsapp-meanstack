@@ -1,6 +1,7 @@
 #!/bin/env node
 //  OpenShift sample Node application
 var express = require('express');
+var routes = require('./routes');
 var fs      = require('fs');
 //var routes = require('./routes');
 var http = require('http');
@@ -22,8 +23,14 @@ if (typeof ipaddress === "undefined") {
 app.set('ipaddress', ipaddress);
 app.set('port', port);
 
+app.set('views', path.join(__dirname, 'views'));
+app.set('view engine', 'jade');
+app.use(express.favicon());
 app.use(express.logger('dev'));
 app.use(express.bodyParser());
+app.use(express.methodOverride());
+app.use(app.router);
+app.use(express.static(path.join(__dirname, 'public')));
 
 // Handle Errors gracefully
 app.use(function(err, req, res, next) {
@@ -32,11 +39,14 @@ app.use(function(err, req, res, next) {
     res.json({error: true});
 });
 
-app.get('/', function(req, res) {
-            res.setHeader('Content-Type', 'text/html');
-           // res.send(self.cache_get('index.html') );
-           res.send('index.html')
-        })
+// Main App Page
+app.get('/', routes.index);
+
+// MongoDB API Routes
+app.get('/polls/polls', routes.list);
+app.get('/polls/:id', routes.poll);
+app.post('/polls', routes.create);
+//app.post('/vote', routes.vote);
 
 
 server.listen(app.get('port'), app.get('ipaddress'), function(){

@@ -85,7 +85,7 @@ exports.create = function(req,res){
 
 
 // Socket API for saving a vote
-exports.vote = function(socket) {
+/*exports.vote = function(socket) {
   socket.on('send:vote', function(data) {
     var ip = socket.handshake.headers['x-forwarded-for'] || socket.handshake.address.address;    
     Poll.findById(data.poll_id, function(err, poll) {
@@ -113,4 +113,4 @@ exports.vote = function(socket) {
       });     
     });
   });
-};
+};  */
