@@ -1,9 +1,9 @@
 {
-  "name": "Polls App",
+  "name": "PollsApp",
   "version": "1.0.0",
   "description": "Polls App, based on http://www.ibm.com/developerworks/library/wa-nodejs-polling-app/, upgraded to include express4",
   "keywords": [
-    "Polls App",
+    "PollsApp",
     "Node.js",
     "application"
   ],
