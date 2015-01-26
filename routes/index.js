@@ -12,10 +12,9 @@ if(process.env.OPENSHIFT_MONGODB_DB_PASSWORD){
   process.env.OPENSHIFT_APP_NAME;
 }
 
-//var db = mongoose.createConnection('localhost', 'pollsapp');
 var db = mongoose.createConnection(connection_string);
 var PollSchema = require('../models/Poll.js').PollSchema;
-var Poll = db.model('polls', PollSchema);
+var Poll = db.model('polls', PollSchema); 
 exports.index = function(req, res){
      res.render('index', { title: 'Polls' });
 };
@@ -87,7 +86,9 @@ exports.create = function(req,res){
 // Socket API for saving a vote
 exports.vote = function(socket) {
   socket.on('send:vote', function(data) {
-    var ip = socket.handshake.headers['x-forwarded-for'] || socket.handshake.address.address;    
+    // var ip = socket.handshake.headers['x-forwarded-for'] || socket.handshake.address.address; 
+    var ip = socket.handshake.headers['x-forwarded-for'] || socket.request.socket.remoteAddress;  
+    // console.log(ip); 
     Poll.findById(data.poll_id, function(err, poll) {
       var choice = poll.choices.id(data.choice);
       choice.votes.push({ ip: ip });      

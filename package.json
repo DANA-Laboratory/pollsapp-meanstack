@@ -1,39 +1,38 @@
 {
-  "name": "OpenShift-Sample-App",
+  "name": "Polls App",
   "version": "1.0.0",
-  "description": "OpenShift Sample Application",
+  "description": "Polls App, based on http://www.ibm.com/developerworks/library/wa-nodejs-polling-app/, upgraded to include express4",
   "keywords": [
-    "OpenShift",
+    "Polls App",
     "Node.js",
-    "application",
-    "openshift"
+    "application"
   ],
   "author": {
-    "name": "OpenShift",
-    "email": "ramr@example.org",
-    "url": "http://www.openshift.com/"
+    "name": "Katja Durrani",
+    "email": "mail@kdurrani.co.uk"
   },
-  "homepage": "http://www.openshift.com/",
   "repository": {
     "type": "git",
-    "url": "https://github.com/openshift/origin-server"
+    "url": "https://github.com/katjad/pollsapp-meanstack"
   },
-
   "engines": {
-    "node": ">= 0.6.0",
+    "node": ">= 0.10.0",
     "npm": ">= 1.0.0"
   },
-
   "dependencies": {
-    "express": "~3.4.4",
+    "body-parser": "^1.10.2",
+    "express": "^4.10.8",
     "jade": "*",
-    "socket.io": "~0.9.16",
-    "mongodb": ">= 1.3.19",
-    "mongoose": ">= 3.8.0"
+    "method-override": "^2.3.1",
+    "mongodb": "^2.0.14",
+    "mongoose": "^3.8.0",
+    "morgan": "^1.5.1",
+    "serve-favicon": "^2.2.0",
+    "serve-static": "^1.8.1",
+    "socket.io": "^1.3.2"
   },
   "devDependencies": {},
   "bundleDependencies": [],
-
   "private": true,
   "main": "server.js"
 }
